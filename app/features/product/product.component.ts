@@ -15,6 +15,4 @@ export class ProductComponent {
       .getRandomImage(500, 300)
       .subscribe((url) => (this.randomImageUrl = url));
   }
-
-  ngOnInit() {}
 }
