@@ -7,6 +7,7 @@ import { HelloComponent } from './hello.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './features/product/product.component';
 import { FeaturesModule } from './features/features.module';
+import { DataModule } from './data/data.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     FeaturesModule,
+    DataModule,
   ],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],

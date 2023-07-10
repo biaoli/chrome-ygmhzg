@@ -1,5 +1,7 @@
 <p>product works!</p>
 
-<div>
-  <img [src]="randomImageUrl" alt="Random Image" />
-</div>
+<carousel>
+  <slide *ngFor="let image of images">
+    <img [src]="image.url" [alt]="image.alt" />
+  </slide>
+</carousel>

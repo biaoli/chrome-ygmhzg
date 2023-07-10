@@ -6,13 +6,26 @@ import { ImageService } from '../../data/image.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class ProductComponent {
-  // constructor() { }
-  randomImageUrl: string;
+export class ProductComponent implements OnInit {
+  images: { url: string; alt: string }[] = [];
 
-  constructor(private imageService: ImageService) {
-    this.imageService
-      .getRandomImage(500, 300)
-      .subscribe((url) => (this.randomImageUrl = url));
+  constructor(private imageService: ImageService) {}
+
+  ngOnInit() {
+    this.getRandomImages(5);
+  }
+
+  getRandomImages(count: number) {
+    this.imageService.getRandomImages(count).subscribe(
+      (images) => {
+        this.images = images.map((image) => ({
+          url: image.download_url,
+          alt: image.author,
+        }));
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
